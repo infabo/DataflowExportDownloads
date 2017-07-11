@@ -73,7 +73,7 @@ class Creare_Exportdownloads_Model_Csv_Collection extends Varien_Data_Collection
         }
 
         foreach ($collectedResult as $item) {
-			if (substr($item, -3, 3) == "csv")
+			if (substr($item, -3, 3) == 'csv')
 			{
 				$this->_collectedFiles[] = $item;
 			}

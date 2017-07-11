@@ -30,7 +30,7 @@ class Creare_Exportdownloads_Block_Adminhtml_Exportdownloads_Grid extends Mage_A
      
     protected function _prepareCollection()
     {
-        $collection = new Creare_Exportdownloads_Model_Csv_Collection();
+        $collection = Mage::getModel('exportdownloads/csv_collection');
 		$this->setCollection($collection);
 		
         return parent::_prepareCollection();
