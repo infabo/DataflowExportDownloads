@@ -23,9 +23,10 @@ class Creare_Exportdownloads_Model_Csv extends Varien_Object
     {
         $this->addData(array(
             'file' => $fileName,
-            'file_created' => new Zend_Date((int)filemtime($filePath . DS . $fileName), Mage::app()->getLocale()->getLocaleCode())
+            'file_created' => new Zend_Date((int)filemtime($filePath . DS . $fileName),
+                Mage::app()->getLocale()->getLocaleCode())
         ));
-		
+
         return $this;
     }
 }

@@ -23,8 +23,8 @@ class Creare_Exportdownloads_Block_Adminhtml_Exportdownloads extends Mage_Adminh
     {
         $this->_blockGroup = 'exportdownloads';
         $this->_controller = 'adminhtml_exportdownloads';
-        $this->_headerText = Mage::helper('exportdownloads')->__('Creare Dataflow Exports'); 
-        parent::__construct();   
-		$this->removeButton('add');
+        $this->_headerText = Mage::helper('exportdownloads')->__('Creare Dataflow Exports');
+        parent::__construct();
+        $this->removeButton('add');
     }
 }

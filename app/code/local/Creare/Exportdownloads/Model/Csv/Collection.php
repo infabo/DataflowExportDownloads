@@ -19,9 +19,9 @@
 
 class Creare_Exportdownloads_Model_Csv_Collection extends Varien_Data_Collection_Filesystem
 {
-	
+
     protected $_baseDir;
-	
+
     public function __construct()
     {
         parent::__construct();
@@ -41,25 +41,26 @@ class Creare_Exportdownloads_Model_Csv_Collection extends Varien_Data_Collection
             ->addTargetDir($this->_baseDir)
             ->setCollectRecursively(false);
     }
-	
+
     protected function _generateRow($filename)
     {
         $row = parent::_generateRow($filename);
         foreach (Mage::getSingleton('exportdownloads/csv')->load($row['basename'], $this->_baseDir)
-            ->getData() as $key => $value) {
+                     ->getData() as $key => $value) {
             $row[$key] = $value;
         }
+
         return $row;
     }
-	
-	 protected function _collectRecursive($dir)
+
+    protected function _collectRecursive($dir)
     {
         $collectedResult = array();
-		
+
         if (!is_array($dir)) {
             $dir = array($dir);
         }
-		
+
         foreach ($dir as $folder) {
             if ($nodes = glob($folder . DIRECTORY_SEPARATOR . '*')) {
                 foreach ($nodes as $node) {
@@ -67,16 +68,15 @@ class Creare_Exportdownloads_Model_Csv_Collection extends Varien_Data_Collection
                 }
             }
         }
-		
+
         if (empty($collectedResult)) {
             return;
         }
 
         foreach ($collectedResult as $item) {
-			if (substr($item, -3, 3) == 'csv')
-			{
-				$this->_collectedFiles[] = $item;
-			}
+            if (substr($item, -3, 3) == 'csv') {
+                $this->_collectedFiles[] = $item;
+            }
         }
     }
 }

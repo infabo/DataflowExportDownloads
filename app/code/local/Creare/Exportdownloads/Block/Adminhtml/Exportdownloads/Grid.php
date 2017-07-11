@@ -25,37 +25,37 @@ class Creare_Exportdownloads_Block_Adminhtml_Exportdownloads_Grid extends Mage_A
         $this->setId('exportdownloads_grid');
         $this->setDefaultSort('file_created');
         $this->setDefaultDir('desc');
-		$this->setSaveParametersInSession(true);
+        $this->setSaveParametersInSession(true);
     }
-     
+
     protected function _prepareCollection()
     {
         $collection = Mage::getModel('exportdownloads/csv_collection');
-		$this->setCollection($collection);
-		
+        $this->setCollection($collection);
+
         return parent::_prepareCollection();
     }
-     
+
     protected function _prepareColumns()
     {
         $this->addColumn('file', array(
-            'header'    => Mage::helper('exportdownloads')->__('File Name'),
-            'index'     => 'file',
-			'filter'	=> false
+            'header' => Mage::helper('exportdownloads')->__('File Name'),
+            'index' => 'file',
+            'filter' => false
         ));
-			
-		$this->addColumn('file_created', array(
-            'header'    => Mage::helper('exportdownloads')->__('Created Date'),
-            'index'     => 'file_created',
-			'type'      => 'datetime'
+
+        $this->addColumn('file_created', array(
+            'header' => Mage::helper('exportdownloads')->__('Created Date'),
+            'index' => 'file_created',
+            'type' => 'datetime'
         ));
-			
+
         return parent::_prepareColumns();
     }
-         
+
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/*/download', array('file'=> $row->getFile()));
+        return $this->getUrl('*/*/download', array('file' => $row->getFile()));
     }
 
 }

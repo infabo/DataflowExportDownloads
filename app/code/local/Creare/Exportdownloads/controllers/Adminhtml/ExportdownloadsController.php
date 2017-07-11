@@ -21,34 +21,33 @@ class Creare_Exportdownloads_Adminhtml_ExportdownloadsController extends Mage_Ad
 {
     public function indexAction()
     {
-			$this->_title($this->__('Creare Dataflow Exports'));
-			$this->loadLayout();
-			
-			$content = $this->getLayout()
-        		->createBlock('exportdownloads/adminhtml_exportdownloads');
-        	$this->_addContent($content);
-			
-        	$this->_setActiveMenu('system/convert');
-        	$this->renderLayout();
+        $this->_title($this->__('Creare Dataflow Exports'));
+        $this->loadLayout();
+
+        $content = $this->getLayout()
+            ->createBlock('exportdownloads/adminhtml_exportdownloads');
+        $this->_addContent($content);
+
+        $this->_setActiveMenu('system/convert');
+        $this->renderLayout();
     }
-	
-	public function downloadAction()
+
+    public function downloadAction()
     {
-		if (Mage::app()->getRequest()->getParam('file'))
-		{
-			$file = Mage::app()->getRequest()->getParam('file');
-			
-			header('Content-disposition: attachment; filename='.$file);
-			header('Content-type: text/csv');
-			header('Content-type: application/ms-excel');
-			readfile(Mage::getBaseDir('export') . DS . $file);
-			exit;
-			
-		} else {
-		
-			Mage::getSingleton('core/session')->addError(Mage::helper('exportdownloads')->__('Unable to find download file'));
-			$this->_redirect('*/*/');
-			
-		}
+        if (Mage::app()->getRequest()->getParam('file')) {
+            $file = Mage::app()->getRequest()->getParam('file');
+
+            header('Content-disposition: attachment; filename=' . $file);
+            header('Content-type: text/csv');
+            header('Content-type: application/ms-excel');
+            readfile(Mage::getBaseDir('export') . DS . $file);
+            exit;
+
+        } else {
+
+            Mage::getSingleton('core/session')->addError(Mage::helper('exportdownloads')->__('Unable to find download file'));
+            $this->_redirect('*/*/');
+
+        }
     }
 }
